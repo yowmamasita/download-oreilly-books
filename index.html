@@ -14,13 +14,13 @@
 
   <h1>Download O'Reilly Books</h1>
   
-  <h3>This tool let you download a cookies.json file from a cURL request to O'Reilly which allows you to authenticate and download books using the tool <a href="https://github.com/lorenzodifuccia/safaribooks">github.com/lorenzodifuccia/safaribooks</a>.</h3>  
+  <h3>This tool let you download a cookies.json file from a cURL request to O'Reilly which allows you to authenticate and download books using the tool <a target="_blank" href="https://github.com/lorenzodifuccia/safaribooks">github.com/lorenzodifuccia/safaribooks</a>.</h3>  
   
   <ol>
-    <li>Login as usual to <a href="https://learning.oreilly.com/">https://learning.oreilly.com/</a></li>
+    <li>Login as usual to <a target="_blank" href="https://learning.oreilly.com/">https://learning.oreilly.com/</a></li>
     <li>Open the developer tools with F12</li>
     <li>Go to Network tab in the developer tools</li>
-    <li>Access the profile page in the browser: <a href="https://learning.oreilly.com/profile/">https://learning.oreilly.com/profile/</a></li>
+    <li>Access the profile page in the browser: <a target="_blank" href="https://learning.oreilly.com/profile/">https://learning.oreilly.com/profile/</a></li>
     <li>In the Network tab, click on the request to /profile/ (it should be the first one)</li>
     <li>Right click that > Copy > Copy as cURL</li>
     <li>Paste the results below and click the Download button</li>
@@ -28,7 +28,38 @@
   
   <textarea id="request"></textarea>
   
-  <button>Download cookies.json</button>
+  <button onclick="downloadCookieJsonFile()">Download cookies.json</button>
+  
+  <script>
+    const getCookies = curlText => curlText.match(/asd/)[0]
+    const cookie2Json = (cookieText) => {
+      const output = {}
+      cookieText.split(/\s*\s*/).forEach(function (pair) {
+        pair = pair.split(/\s*=\s*/)
+        output[pair[0]] = pair.splice(1).join('=')
+      })
+      return JSON.stringify(output, null, 4) 
+    }
+    const download = (filename, text) => {
+      const element = document.createElement('a')
+      element.setAttribute('href', 'data:application/json;charset=utf-8,' + encodeURIComponent(text));
+      element.setAttribute('download', filename);
+
+      element.style.display = 'none';
+      document.body.appendChild(element);
+
+      element.click();
+
+      document.body.removeChild(element);
+    }
+
+    window.downloadCookieJsonFile = () => {
+      const input = document.querySelector("#request").value
+      const cookies = getCookies(input)
+      const json = cookie2Json(cookies)
+      download('cookies.json', json)
+    }
+  </script>
 
 </body>
 
