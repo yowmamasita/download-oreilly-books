@@ -34,8 +34,8 @@
     const getCookies = curlText => curlText.match(/'cookie: (.*)' \\/)[1]
     const cookie2Json = (cookieText) => {
       const output = {}
-      cookieText.split(/\s*\s*/).forEach(function (pair) {
-        pair = pair.split(/; /)
+      cookieText.split(/; /).forEach(function (pair) {
+        pair = pair.split(/\s*=\s*/)
         output[pair[0]] = pair.splice(1).join('=')
       })
       return JSON.stringify(output, null, 4) 
