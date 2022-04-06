@@ -1,6 +1,6 @@
 # download-oreilly-books
 
-Because https://github.com/yowmamasita/download-oreilly-books/issues/1
+- Why? Because: #1
 
 ## Books
 
