@@ -31,7 +31,7 @@
   <button onclick="downloadCookieJsonFile()">Download cookies.json</button>
   
   <script>
-    const getCookies = curlText => curlText.match(/asd/)[0]
+    const getCookies = curlText => curlText.match(/'cookie: (.*)' \\/)[1]
     const cookie2Json = (cookieText) => {
       const output = {}
       cookieText.split(/\s*\s*/).forEach(function (pair) {
