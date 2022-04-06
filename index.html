@@ -35,7 +35,7 @@
     const cookie2Json = (cookieText) => {
       const output = {}
       cookieText.split(/\s*\s*/).forEach(function (pair) {
-        pair = pair.split(/\s*=\s*/)
+        pair = pair.split(/; /)
         output[pair[0]] = pair.splice(1).join('=')
       })
       return JSON.stringify(output, null, 4) 
