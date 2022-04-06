@@ -12,8 +12,23 @@
 
 <body>
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
+  <h1>Download O'Reilly Books</h1>
+  
+  <h3>This tool let you download a cookies.json file from a cURL request to O'Reilly which allows you to authenticate and download books using the tool <a href="https://github.com/lorenzodifuccia/safaribooks">github.com/lorenzodifuccia/safaribooks</a>.</h3>  
+  
+  <ol>
+    <li>Login as usual to <a href="https://learning.oreilly.com/">https://learning.oreilly.com/</a></li>
+    <li>Open the developer tools with F12</li>
+    <li>Go to Network tab in the developer tools</li>
+    <li>Access the profile page in the browser: <a href="https://learning.oreilly.com/profile/">https://learning.oreilly.com/profile/</a></li>
+    <li>In the Network tab, click on the request to /profile/ (it should be the first one)</li>
+    <li>Right click that > Copy > Copy as cURL</li>
+    <li>Paste the results below and click the Download button</li>
+  </ol>
+  
+  <textarea id="request"></textarea>
+  
+  <button>Download cookies.json</button>
 
 </body>
 
